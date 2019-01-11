@@ -67,8 +67,8 @@ prepare_host() {
 		return -1
 	fi
 
-	if [[ "$DISTRIB_RELEASE" == "bionic" && "$build_host" != "bionic" ]]; then
-		error_msg "Building Ubuntu Bionic images requires a Bionic build host, please upgrade your build host or try to build in Docker."
+	if [[ ("$DISTRIB_RELEASE" == "bionic" || "$DISTRIB_RELEASE" == "cosmic")  && "$build_host" != "bionic" ]]; then
+		error_msg "Building Ubuntu $DISTRIB_RELEASE images requires a Bionic build host, please upgrade your build host or try to build in Docker."
 		return -1
 	fi
 
@@ -284,7 +284,7 @@ create_sources_list()
 	EOF
 	;;
 
-	xenial|bionic)
+	xenial|bionic|cosmic)
 	cat <<-EOF > $basedir/etc/apt/sources.list
 	deb http://${UBUNTU_MIRROR} $release main restricted universe multiverse
 	#deb-src http://${UBUNTU_MIRROR} $release main restricted universe multiverse

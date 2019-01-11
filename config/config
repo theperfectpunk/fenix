@@ -137,8 +137,6 @@ PACKAGE_LIST_OFFICE="lxtask mirage galculator hexchat mpv \
 	libpam-gnome-keyring thunderbird system-config-printer-common paprefs tango-icon-theme \
 	libreoffice-writer libreoffice-style-tango libreoffice-gtk fbi cups-pk-helper cups"
 
-PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings"
-
 PACKAGE_LIST_XSERVER="libunwind8 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xf86dri0 libxcb-xkb1 libxcb-xv0 \
 	libpixman-1-dev x11proto-core-dev x11proto-input-dev x11proto-xext-dev x11proto-video-dev x11proto-randr-dev x11proto-render-dev x11proto-dri2-dev \
 	x11proto-gl-dev x11proto-fonts-dev x11proto-xinerama-dev x11proto-kb-dev x11proto-xf86dri-dev x11proto-resource-dev x11proto-scrnsaver-dev \
@@ -174,7 +172,7 @@ case $DISTRIB_RELEASE in
 	DEBOOTSTRAP_COMPONENTS="main"
 	PACKAGE_LIST_RELEASE="man-db nano"
 	PACKAGE_LIST_KODI="libglu1-mesa libglu1 libmicrohttpd10 libpcrecpp0v5 libssh-4 libtag1v5 libtinyxml2.6.2v5 libva-drm1 libcurl3"
-	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP $PACKAGE_LIST_KODI chromium-browser gksu"
+	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP $PACKAGE_LIST_KODI chromium-browser gksu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings"
 	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP paman libgcr-3-common gcj-jre-headless"
 	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP language-selector-gnome system-config-printer-gnome ubuntu-mate-lightdm-theme"
 	[[ $DISTRIB_ARCH == armhf ]] && PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP mate-utils ubuntu-mate-welcome mate-settings-daemon"
@@ -184,7 +182,7 @@ case $DISTRIB_RELEASE in
 	PACKAGE_LIST_RELEASE="man-db less kbd net-tools netcat-openbsd gnupg2 dirmngr"
 	PACKAGE_LIST_KODI="libglu1-mesa libglu1 libmicrohttpd12 libpcrecpp0v5 libssh-4 libtag1v5 libtinyxml2.6.2v5 libva-drm1 libcurl3"
 	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP $PACKAGE_LIST_GSTREAMER $PACKAGE_LIST_QT $PACKAGE_LIST_KODI"
-	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP chromium dbus-x11 gksu profile-sync-daemon"
+	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP chromium dbus-x11 gksu profile-sync-daemon lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings"
 	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP paman libgcr-3-common gcj-jre-headless"
 	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP system-config-printer"
 	;;
@@ -192,9 +190,17 @@ case $DISTRIB_RELEASE in
 	DEBOOTSTRAP_COMPONENTS="main,universe"
 	PACKAGE_LIST_RELEASE="man-db less kbd net-tools netcat-openbsd gnupg2 dirmngr nano wget"
 	PACKAGE_LIST_KODI="libglu1-mesa libglu1 libpcrecpp0v5 libssh-4 libtag1v5 libtinyxml2.6.2v5 libcurl4 libcrossguid0 libmariadbclient18 libmicrohttpd12"
-	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP $PACKAGE_LIST_GSTREAMER $PACKAGE_LIST_QT"
+	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP $PACKAGE_LIST_GSTREAMER $PACKAGE_LIST_QT lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings"
 	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP $PACKAGE_LIST_KODI chromium-browser xserver-xorg-input-all dbus-x11 profile-sync-daemon"
 	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP system-config-printer system-config-printer-gnome language-selector-gnome"
+	;;
+	cosmic)
+	DEBOOTSTRAP_COMPONENTS="main,universe"
+	PACKAGE_LIST_RELEASE="man-db less kbd net-tools netcat-openbsd gnupg2 dirmngr nano wget"
+	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP xserver-xorg-input-all paprefs dbus-x11 chromium-browser system-config-printer-common system-config-printer language-selector-gnome nodm"
+	PACKAGE_LIST_DESKTOP="${PACKAGE_LIST_DESKTOP/pulseaudio-module-gconf /}"
+	PACKAGE_LIST_DESKTOP="${PACKAGE_LIST_DESKTOP/libgnome2-perl /}"
+	PACKAGE_LIST_DESKTOP="$PACKAGE_LIST_DESKTOP pulseaudio-module-gsettings"
 	;;
 esac
 

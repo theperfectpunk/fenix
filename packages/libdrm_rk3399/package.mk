@@ -1,6 +1,6 @@
 PKG_NAME="libdrm_rk3399"
-PKG_VERSION="e84e33f3ab17126551d626005e0e38b9eb96283a"
-PKG_SHA256="32a3f3d9a8a14de4b2b4b9a0dd5f3d3aba5609baef2715de9512def07bf12fc4"
+PKG_VERSION="be6afff0f6dc9e21dc4a338e43cb5272f1cf9ede"
+PKG_SHA256="7a0ecd38eb4ec7d6822398e6bc39a0783247f0b34616d48bb200057a77523940"
 PKG_SOURCE_DIR="libdrm_rk3399-${PKG_VERSION}*"
 PKG_SITE="https://github.com/numbqq/libdrm_rk3399"
 PKG_URL="https://github.com/numbqq/libdrm_rk3399/archive/$PKG_VERSION.tar.gz"
